@@ -1,0 +1,23 @@
+@import "~assets/scss/bundle.scss";
+
+.box {
+  position: relative;
+
+  display: grid;
+  gap: 2em;
+
+  justify-items: flex-start;
+
+  padding: 2.5em;
+  border: 1px solid $color-gray;
+  border-radius: 1.25em;
+
+  &--gray {
+    background: $color-blue-10;
+  }
+
+  @include Mobile {
+    gap: 1.5em;
+    padding: 1.5em;
+  }
+}

@@ -1,0 +1,233 @@
+@import "~assets/scss/bundle.scss";
+
+.button {
+	--button-color: #{$color-red};
+	--button-outline-width: 0;
+
+	--button-text-color: white;
+	--button-text-size: 1.125rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	padding: 1em 3em;
+	background: var(--button-color);
+
+	box-shadow: inset 0 0 0 var(--button-outline-width) var(--button-color);
+	border-radius: 1.5em;
+
+	transition: 200ms ease color, 200ms ease background-color, 100ms ease opacity, 200ms ease box-shadow;
+
+	// Default
+
+	&:active {
+		opacity: 0.75;
+	}
+
+	&:disabled {
+		cursor: not-allowed;
+	}
+
+	&:hover:not(&--outline) {
+		--button-color: #{rgba($color-red, 0.8)};
+	}
+
+	// Rest
+
+	&--outline {
+		--button-outline-width: 2px;
+		--button-color: #{rgba($color-gray, 0.1)};
+
+		background: unset;
+
+		&:hover {
+			--button-outline-width: 4px;
+		}
+	}
+
+	&--outline:not(&--white, &--green, &--violet, &--dark) {
+		&:hover {
+			--button-color:#{rgba(white, 0.85)};
+		}
+	}
+
+	/* Colors */
+
+	&--green {
+		--button-color: #{$color-green};
+
+	}
+
+	&--green:not(&--outline) {
+		&:hover {
+			--button-color: #{rgba($color-green, 0.85)};
+			--button-text-color: white;
+		}
+	}
+
+	&--blue {
+		--button-color: #{$color-blue-80};
+
+	}
+
+	&--blue:not(&--outline) {
+		&:hover {
+			--button-color: #{rgba($color-blue-80, 0.85)};
+			--button-text-color: white;
+		}
+	}
+
+	&--white:not(&--outline) {
+		--button-color: #{$color-white};
+		--button-text-color: #{$color-black-main};
+
+		&:hover {
+			--button-color: #{rgba($color-dark, 0.1)};
+		}
+	}
+
+	// If is `&--white` and `&--outline`
+	&--white#{&}--outline {
+		box-shadow: inset 0 0 0 2px #EEF2F7;
+
+		&:hover {
+			--button-color: #{rgba(white, 0.1)};
+
+			background: var(--button-color);
+			box-shadow: inset 0 0 0 2px $color-gray;
+		}
+	}
+
+	&--dark {
+		--button-color: #{$color-dark-75};
+		--button-text-color: white;
+	}
+
+	&--dark:not(&--outline) {
+		&:hover {
+			--button-color: #{rgba($color-dark-75, 0.85)};
+		}
+	}
+
+	&--gray:not(&--outline) {
+		--button-color: #{$color-blue-10};
+		--button-text-color: #{$color-black-main};
+
+		&:hover {
+			--button-color: #{$color-gray};
+		}
+	}
+
+	/* Features */
+
+	&--smaller {
+		padding: 0.625em 1.25em;
+		border-radius: 1.5em;
+
+		.button__text {
+			--button-text-size: 0.875rem;
+		}
+	}
+
+	&--small {
+		padding: 0.875em 1.75em;
+		border-radius: 1.5em;
+
+		.button__text {
+			--button-text-size: 1rem;
+		}
+	}
+
+	&--big {
+		padding: 1.25em 2em;
+		border-radius: 1.5em;
+
+		.button__text {
+			--button-text-size: 1.125rem;
+		}
+	}
+
+	&:not(&--pending) {
+		.button__loader {
+			opacity: 0;
+			pointer-events: none;
+		}
+	}
+
+	&--icon-only {
+		--icon-size: 1.5rem;
+
+		padding: unset;
+	}
+
+	&:not(&--icon-only) {
+		.button__icon {
+			padding: unset;
+		}
+	}
+
+	&--squared {
+		border-radius: 0.5em;
+	}
+
+	&>*:not(:first-child, .button__loader) {
+		margin-left: 0.75em;
+	}
+}
+
+a.button {
+	display: inline-flex;
+	text-decoration: none;
+}
+
+.button__text {
+	color: var(--button-text-color);
+	font-size: var(--button-text-size);
+	font-weight: 700;
+
+	white-space: nowrap;
+}
+
+
+.button__icon {
+	--icon-size: #{var(--button-text-size)};
+
+	display: grid;
+	padding: 1.5em;
+	color: var(--button-icon-color, var(--button-text-color));
+
+	.icon {
+		transition: 200ms ease transform;
+	}
+
+	&--smaller {
+		--icon-size: 1em;
+
+		padding: 0.75em;
+	}
+
+	&--small {
+		--icon-size: 1.25rem;
+		padding: 1em;
+	}
+
+	&--big {
+		--icon-size: 1.75rem;
+		padding: 2em;
+	}
+}
+
+.button__loader {
+	--loader-color: #{rgba(white, 0.5)};
+	--loader-part-color: #{rgba(white, 1)};
+
+	position: absolute;
+	inset: 0;
+
+	transition: 200ms ease opacity;
+
+	display: grid;
+	background: rgba($color-dark, 0.5);
+	border-radius: inherit;
+}

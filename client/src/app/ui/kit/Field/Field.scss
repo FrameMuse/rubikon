@@ -1,0 +1,50 @@
+@import "~assets/scss/bundle.scss";
+
+.field {
+	display: grid;
+	gap: 0.75em;
+
+	min-width: var(--input-width, fit-content);
+
+	cursor: text;
+}
+
+.field__label {
+	font-size: 1.125rem;
+	font-weight: 700;
+}
+
+.field__icon {
+	--icon-size: 1.25em;
+	--icon-color: #{rgba($color-dark, 0.5)};
+
+	margin-right: 1em;
+}
+
+.field__appearance {
+	display: flex;
+
+	@include InputAppearance;
+}
+
+.field__input {
+	$font-size: 1rem;
+
+	width: 100%;
+
+	color: $color-black-main;
+	font-size: $font-size;
+	font-weight: 600;
+
+	// height: $font-size; // To ensure input has the same height as font-size.
+
+	&::placeholder {
+		color: rgba($color-dark, 0.5);
+	}
+
+	&:disabled {
+		cursor: not-allowed;
+	}
+
+	resize: vertical;
+}

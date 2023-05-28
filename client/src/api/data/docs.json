@@ -1,0 +1,145 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Медицинское API",
+    "version": "0.1.0",
+    "description": "API для получения данных о врачах и пациентах"
+  },
+  "basePath": "/api",
+  "paths": {
+    "/doctors": {
+      "get": {
+        "tags": [
+          "Врачи"
+        ],
+        "summary": "Получить список всех врачей",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Doctor"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/doctors/{doctorId}": {
+      "get": {
+        "tags": [
+          "Врачи"
+        ],
+        "summary": "Получить информацию о враче по идентификатору",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "doctorId",
+            "in": "path",
+            "description": "Идентификатор врача",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "schema": {
+              "$ref": "#/definitions/Doctor"
+            }
+          }
+        }
+      }
+    },
+    "/patients": {
+      "get": {
+        "tags": [
+          "Пациенты"
+        ],
+        "summary": "Получить список всех пациентов",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Patient"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/patients/{patientId}": {
+      "get": {
+        "tags": [
+          "Пациенты"
+        ],
+        "summary": "Получить информацию о пациенте по идентификатору",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "description": "Идентификатор пациента",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "schema": {
+              "$ref": "#/definitions/Patient"
+            }
+          }
+        }
+      }
+    }
+  },
+  "schemes": {
+    "Doctor": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "specialty": {
+          "type": "string"
+        }
+      }
+    },
+    "Patient": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "age": {
+          "type": "integer"
+        },
+        "gender": {
+          "type": "string",
+          "enum": ["male", "female"]
+        }
+      }
+    }
+  }
+}

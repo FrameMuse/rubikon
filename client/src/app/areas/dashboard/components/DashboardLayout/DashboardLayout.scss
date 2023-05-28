@@ -1,0 +1,8 @@
+@import "~assets/scss/bundle.scss";
+
+.dashboard-layout {
+	display: grid;
+	gap: 2em;
+
+	grid-template-columns: 15% 1fr;
+}

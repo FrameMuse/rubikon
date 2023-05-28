@@ -1,0 +1,16 @@
+@import "~assets/scss/bundle.scss";
+
+.callout {
+  display: inline-block;
+  padding: 0.35em 1.5em;
+
+  background: rgba($color-blue, 0.1);
+  border-radius: 10em;
+
+  font-weight: 700;
+  line-height: 1.25;
+
+  &--red {
+    background: rgba($color-red, 0.1);
+  }
+}

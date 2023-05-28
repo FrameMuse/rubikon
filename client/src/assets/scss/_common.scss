@@ -1,0 +1,85 @@
+$mul: 'Mulish', sans-serif;
+
+$base: #0D0E14;
+
+$red: #EA4040;
+$green: #07B123;
+$blue: #004B7F;
+
+$grey: #4B5567;
+$grey1: rgba(13, 14, 20, .75);
+
+$red1: rgba(234, 64, 64, 0.1);
+
+h1 {
+  font-size: $font-size-h1;
+  font-weight: 800;
+
+  line-height: 1.1;
+
+  @include Mobile {
+    font-size: $font-size-h2;
+  }
+}
+
+h2 {
+  font-size: $font-size-h2;
+  font-weight: 800;
+
+  line-height: 1.1;
+}
+
+h3 {
+  font-size: $font-size-h3;
+  font-weight: 800;
+
+  line-height: 1.25;
+}
+
+h4 {
+  font-size: $font-size-h4;
+  font-weight: 800;
+
+  line-height: 1.1;
+}
+
+h5 {
+  font-size: $font-size-h5;
+  font-weight: 800;
+
+  line-height: 1.1;
+}
+
+h6 {
+  font-size: $font-size-h6;
+  font-weight: 700;
+
+  line-height: 1.1;
+}
+
+.wrapper {
+  $indent: 5vw;
+
+  width: 100%;
+  max-width: calc(1650px + ($indent * 2));
+  padding: 0 $indent;
+  margin: 0 auto;
+}
+
+.page-section {
+  position: relative;
+
+  margin: 7.5em auto;
+  max-width: calc(1356px + 10vw);
+
+  &>h1:first-child,
+  &>h2:first-child {
+    margin-bottom: 5rem;
+  }
+
+  h1,
+  h2 {
+    justify-self: center;
+    text-align: center;
+  }
+}

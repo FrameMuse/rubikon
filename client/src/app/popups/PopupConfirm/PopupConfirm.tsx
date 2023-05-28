@@ -1,0 +1,47 @@
+import Buttons from "app/layouts/Buttons/Buttons"
+import PopupLayout from "app/layouts/PopupLayout/PopupLayout"
+import TextBox from "app/layouts/TextBox/TextBox"
+import Button from "app/ui/kit/Button/Button"
+import { useEffect, useState } from "react"
+import { Modal, useModalContext } from "react-modal-global"
+import Time from "utils/transform/time"
+
+interface PopupConfirmProps {
+  onConfirm?(): void
+}
+
+function PopupConfirm(props: PopupConfirmProps) {
+  const modal = useModalContext()
+  const [timer, setTimer] = useState(3)
+
+  useEffect(() => {
+    return Time.everySecond(() => setTimer(timer => timer - 1))
+  })
+
+  function onConfirm() {
+    modal.close()
+    props.onConfirm?.()
+  }
+
+  return (
+    <PopupLayout width="25em">
+      <TextBox>
+        <h4>Confirm</h4>
+      </TextBox>
+      <Buttons>
+        <Button color="gray" disabled={timer > 0} onClick={onConfirm}>{timer > 0 ? ("Wait " + timer) : "Confirm"}</Button>
+        <Button color="dark" onClick={modal.close}>Cancel</Button>
+      </Buttons>
+    </PopupLayout>
+  )
+}
+
+export async function confirmAction() {
+  let confirmed = false
+  const onConfirm = () => confirmed = true
+  await Modal.open(PopupConfirm, { weak: true, onConfirm })
+
+  return confirmed
+}
+
+export default PopupConfirm

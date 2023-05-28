@@ -1,0 +1,14 @@
+@import "~assets/scss/bundle.scss";
+
+.read-more {
+	display: inline;
+
+	span[hidden] {
+		display: none;
+	}
+}
+
+.read-more__button {
+	color: $color-blue-80;
+	font-weight: 600;
+}

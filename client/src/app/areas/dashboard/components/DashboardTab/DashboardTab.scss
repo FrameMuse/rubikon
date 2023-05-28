@@ -1,0 +1,22 @@
+@import "~assets/scss/bundle.scss";
+
+.dashboard-tab {
+	padding: 0.75em 1.25em;
+	background: $color-blue-10;
+	border-radius: 0.5em;
+
+	&--active {
+		background: $color-blue-80;
+
+		.dashboard-tab__text {
+			color: white;
+		}
+	}
+}
+
+.dashboard-tab__text {
+	font-size: 1.25rem;
+	font-weight: 600;
+
+
+}
